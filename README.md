@@ -1,4 +1,4 @@
-# Attendance Monitoring System
+# Attendance Tracking System
 
 # Introduction
 
