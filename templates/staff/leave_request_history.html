@@ -1,0 +1,63 @@
+
+
+{% extends 'staff/hod_home_index1.html' %}
+{% block body %}
+
+<body>
+<br><br>
+
+  <div class="container">
+    <h1 class="text-center mb-4">Leave Request History</h1>
+    <form id="form1" name="form1" method="post" action="/myapp/staff_leave_history_post/" class="mb-4">
+        {% csrf_token %}
+{#      <div class="input-group mb-3 bg-light">#}
+        <br><br>
+          <table class="px pull-left">
+              <tr>
+                  <th>Name</th>
+                    <td><input type="search" class="form-control" placeholder="Search" name="search"></td>
+                  <th>Starting Date</th>
+              <td><input type="date" class="form-control" name="date"></td>
+                  <td><input type="submit" class="btn btn-success" name="button" value="Search"></td>
+{#      <button class="btn btn-outline-secondary" type="button">#}
+          </tr>
+
+          </table>
+
+{#        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">#}
+{#          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>#}
+{#        </svg>#}
+{#      </button>#}
+{#    </div>#}
+    </form>
+  {% csrf_token %}
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>Sl. No.</th>
+            <th>Student Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Description</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in data %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.STUDENT.student_name }}</td>
+            <td>{{ i.start_date }}</td>
+            <td>{{ i.end_date }}</td>
+            <td>{{ i.desc }}</td>
+            <td>{{ i.status }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    <br>
+    </div>
+  </div>
+</body>
+{% endblock %}
